@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import json
-
+import numpy as np 
 class App:
     def __init__(self, root):
         self.root = root
