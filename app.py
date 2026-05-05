@@ -426,7 +426,9 @@ class App:
         self.button_finishE.place_forget() 
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
-        
+        a=5
+        print(a)
+
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
     
     def show_futurE_frame(self):
