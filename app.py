@@ -1,6 +1,7 @@
 from tkcalendar import DateEntry
 import tkinter as tk 
 from tkinter import ttk
+import numpy as np
 from PIL import Image, ImageTk
 import json
 
