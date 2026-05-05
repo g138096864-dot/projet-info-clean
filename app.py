@@ -1,26 +1,38 @@
 from tkcalendar import DateEntry
 import tkinter as tk
+from tkinter import ttk
 from PIL import Image, ImageTk
 import json
 
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.geometry("800x600")
+        self.root.state("zoomed")
         self.root.title("Application de vote électronique de EMINES")
 
-        # charger image originale
+        # CHARGEMENT DES IMAGES DES ARRIERE PLAN : 
         self.image_accueil = Image.open("New board 1.png")
         self.image_register = Image.open("Inscription.png")
         self.image_login = Image.open("Login.png")
+        self.image_condidat = Image.open("condidat.png")
         self.image_mot_de_passe_oublié = Image.open("mot de passe oblié1.png")
+        self.image_futurE =  Image.open("elections a venir.png")
+        self.image_currentE =  Image.open("elections en cours.png")
+        self.image_finishE =  Image.open("ELECTIONS TERMINES.png")
+
+        # CREATION DES FRAMES : 
         self.accueil_frame=tk.Frame(root)
         self.register_frame=tk.Frame(root)
         self.login_frame=tk.Frame(root)
         self.mot_de_passe_oublié_frame=tk.Frame(root)
+        self.condidat_frame=tk.Frame(root)
+        self.futurE_frame=tk.Frame(root)
+        self.currentE_frame=tk.Frame(root)
+        self.finishE_frame=tk.Frame(root)
 
+        # PACKAGE DES FRAMES :
         self.accueil_frame.pack(fill="both", expand=True)
-        # label pour afficher l'image
+
         self.label_accueil = tk.Label(self.accueil_frame)
         self.label_accueil.pack(fill="both", expand=True)
 
@@ -30,22 +42,40 @@ class App:
         self.label_login = tk.Label(self.login_frame)
         self.label_login.pack(fill="both", expand=True)
 
+        self.label_condidat = tk.Label(self.condidat_frame)
+        self.label_condidat.pack(fill="both", expand=True)
+
+        self.label_futurE = tk.Label(self.futurE_frame)
+        self.label_futurE.pack(fill="both", expand=True)
+
+        self.label_currentE = tk.Label(self.currentE_frame)
+        self.label_currentE.pack(fill="both", expand=True)
+
+        self.label_finishE = tk.Label(self.finishE_frame)
+        self.label_finishE.pack(fill="both", expand=True)
+
         self.label_mot_de_passe_oublié = tk.Label(self.mot_de_passe_oublié_frame)
         self.mot_de_passe_oublié_frame.pack(fill="both", expand=True)
 
-        # mettre à jour l'image quand la fenêtre change
+        # METTRE A JOUR L'IMAGE QUAND LA FENETRE CHANGE
 
         self.accueil_frame.bind("<Configure>", self.resize_image_accueil)
         self.register_frame.bind("<Configure>", self.resize_image_register)
         self.login_frame.bind("<Configure>", self.resize_image_login)
+        self.condidat_frame.bind("<Configure>", self.resize_image_condidat)
+        self.futurE_frame.bind("<Configure>", self.resize_image_futurE)
+        self.currentE_frame.bind("<Configure>", self.resize_image_currentE)
+        self.finishE_frame.bind("<Configure>", self.resize_image_finishE)
         self.mot_de_passe_oublié_frame.bind("<Configure>", self.resize_image_mot_de_passe_oublié)
+       
+       # LES BOUTTONS DE L'APPLICATION
         self.button_register = tk.Button(root,
     text="S'inscrire",
     fg="white",              
     bg="#048b9a",           
     activeforeground="white",
     borderwidth=0,
-    highlightthickness=0,height=1,
+    highlightthickness=0,
     relief="flat",command=self.show_register_frame)
         self.button_register.place(relx=0.13, rely=0.05, anchor="center")
 
@@ -54,9 +84,36 @@ class App:
     bg="#048b9a",           
     activeforeground="white",
     borderwidth=0,
-    highlightthickness=0,height=1,
+    highlightthickness=0,
     relief="flat",command=self.show_login_frame)
         self.button_login.place(relx=0.24, rely=0.05, anchor="center")
+
+        self.button_futurE = tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat",command=self.show_futurE_frame)
+        self.button_futurE.place(relx=0.24, rely=0.05, anchor="center")
+
+        self.button_currentE = tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat")
+        self.button_currentE.place(relx=0.24, rely=0.05, anchor="center")
+
+        self.button_finishE= tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat")
+        self.button_finishE.place(relx=0.24, rely=0.05, anchor="center")
         
 
         self.button_accueil = tk.Button(root, text="Accueil",
@@ -99,6 +156,7 @@ class App:
     highlightthickness=0,
     relief="flat",font=20,command=self.login)
 
+        # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
         self.root.config(menu=self.menu_bar)
         self.file_menu = tk.Menu(self.menu_bar, tearoff=0)  
@@ -126,13 +184,13 @@ class App:
 
         self.date_entry = DateEntry(root, date_pattern='yyyy-mm-dd',bg="#eeeeee")
 
-        self.choix = tk.StringVar()
-        self.classe_2026 = tk.Radiobutton(root,text="2026", variable=self.choix, value="2026",bg="#b4c9de")
-        self.classe_2027 = tk.Radiobutton(root,text="2027", variable=self.choix, value="2027",bg="#b4c9de")
-        self.classe_2028 = tk.Radiobutton(root,text="2028", variable=self.choix, value="2028",bg="#b4c9de")
-        self.classe_2029 = tk.Radiobutton(root,text="2029", variable=self.choix, value="2029",bg="#b4c9de")
-        self.classe_2030 = tk.Radiobutton(root,text="2030", variable=self.choix, value="2030",bg="#b4c9de")
+        classes=["2026","2027","2028","2029","2030"]
+        self.combo_classe = ttk.Combobox(root, values=classes, state="normal")  # "normal" = on peut écrire
+        self.combo_classe.set("classe")
         self.root.after(100, self.fix_layout)
+
+       
+        # LES FONCTIONS D'AJUSTEMENT DE TAILLE
     def resize_image_accueil(self, event):
         # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
@@ -151,13 +209,38 @@ class App:
             resized = self.image_login.resize((event.width, event.height))
             self.photo_login = ImageTk.PhotoImage(resized)
             self.label_login.config(image=self.photo_login)
+    def resize_image_condidat(self, event):
+        # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_condidat.resize((event.width, event.height))
+            self.photo_condidat = ImageTk.PhotoImage(resized)
+            self.label_condidat.config(image=self.photo_condidat)
+    def resize_image_futurE(self, event):
+        # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_futurE.resize((event.width, event.height))
+            self.photo_futurE = ImageTk.PhotoImage(resized)
+            self.label_futurE.config(image=self.photo_futurE)
+    def resize_image_currentE(self, event):
+        # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_currentE.resize((event.width, event.height))
+            self.photo_currentE = ImageTk.PhotoImage(resized)
+            self.label_currentE.config(image=self.photo_currentE)
+    def resize_image_finishE(self, event):
+        # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_finishE.resize((event.width, event.height))
+            self.photo_finishE = ImageTk.PhotoImage(resized)
+            self.label_finishE.config(image=self.photo_finishE)
     def resize_image_mot_de_passe_oublié(self, event):
          # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
             resized = self.image_mot_de_passe_oublié.resize((event.width, event.height))
             self.photo_mot_de_passe_oublié = ImageTk.PhotoImage(resized)
             self.label_mot_de_passe_oublié.config(image=self.photo_mot_de_passe_oublié)
-
+        
+        # LES FONCTION DE CHANGEMENT DU STYLE DES BOUTTONS
     def style_login(self, a):
         if a==1:
             self.button_login.config(bg="#048b9a",font=10)  
@@ -169,131 +252,224 @@ class App:
         if b==2:
             self.button_register.config(bg="#9fc5f8",font=20,fg="black")
 
+        # LES FONCTION D'AFFICHAGE DES FRAMES 
     def show_register_frame(self):
+        #CACHER LES AUTRES FRAMES 
         self.accueil_frame.pack_forget()
         self.login_frame.pack_forget()
+        self.condidat_frame.pack_forget()
         self.mot_de_passe_oublié_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
         self.register_frame.pack(fill="both", expand=True)
-        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center")
-        self.button_login.place(relx=0.22, rely=0.6, anchor="center")
-        self.style_login(2)
+        
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.button_register.place_forget()
         self.button_send2.place_forget()
         self.button_send3.place_forget()
         self.button_send4.place_forget()
+        self.email2.place_forget()
+        self.password2.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+        self.button_login.place(relx=0.22, rely=0.6, anchor="center",height=30,width=100)
+        self.style_login(2)
+
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
         self.email1.place(relx=0.8, rely=0.23, anchor="center",width=180,height=30)
         self.password1.place(relx=0.8, rely=0.33, anchor="center",width=180,height=30)
         self.nom.place(relx=0.56, rely=0.33, anchor="center",width=180,height=30)
         self.prenom.place(relx=0.56, rely=0.23, anchor="center",width=180,height=30)
         self.confirm.place(relx=0.8, rely=0.47, anchor="center",width=180,height=30)
         self.date_entry.place(relx=0.56, rely=0.47, anchor="center",width=180,height=30)
-        self.classe_2026.place(relx=0.52, rely=0.58, anchor="center",width=180)
-        self.classe_2027.place(relx=0.52, rely=0.62, anchor="center",width=180)
-        self.classe_2028.place(relx=0.52, rely=0.66, anchor="center",width=180)
-        self.classe_2029.place(relx=0.52, rely=0.70, anchor="center",width=180)
-        self.classe_2030.place(relx=0.52, rely=0.74, anchor="center",width=180)
-        self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
-        self.email2.place_forget()
-        self.password2.place_forget()
+        self.combo_classe.place(relx=0.56, rely=0.58, anchor="center",width=180,height=30)
+        
+        
+       
     def show_login_frame(self):
+        #CACHER LES AUTRES FRAMES
         self.accueil_frame.pack_forget()
         self.register_frame.pack_forget()
         self.mot_de_passe_oublié_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.login_frame.pack(fill="both", expand=True)
+        
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
         self.prenom.place_forget()
         self.confirm.place_forget()
         self.email1.place_forget()
         self.password1.place_forget()
         self.date_entry.place_forget()
-
-        self.classe_2026.place_forget()
-        self.classe_2027.place_forget()
-        self.classe_2028.place_forget()
-        self.classe_2029.place_forget()
-        self.classe_2030.place_forget()
-        self.button_send1.place_forget()
-        self.login_frame.pack(fill="both", expand=True)
-        self.button_accueil.place(relx=0.13, rely=0.08, anchor="center")
         self.button_login.place_forget()
-        self.button_register.place(relx=0.82, rely=0.55, anchor="center")
+        self.combo_classe.place_forget()
+        self.button_send1.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
+        self.button_register.place(relx=0.82, rely=0.55, anchor="center",height=30,width=100)
         self.style_register(2)
         self.button_send2.place(relx=0.48, rely=0.5, anchor="center",width=150,height=35)
+        self.button_send4.place(relx=0.3, rely=0.56, anchor="center") 
+
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
         self.email2.place(relx=0.3, rely=0.4, anchor="center",width=320,height=30)
         self.password2.place(relx=0.3, rely=0.5, anchor="center",width=320,height=30)
-        self.button_send4.place(relx=0.3, rely=0.56, anchor="center")
+        
+    
     def show_accueil_frame(self):
+        #CACHER LES AUTRES FRAMES
         self.login_frame.pack_forget()
+        self.condidat_frame.pack_forget()
         self.register_frame.pack_forget()
         self.mot_de_passe_oublié_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.accueil_frame.pack(fill="both", expand=True)
+
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
         self.prenom.place_forget()
         self.confirm.place_forget()
         self.date_entry.place_forget()
-
-        self.classe_2026.place_forget()
-        self.classe_2027.place_forget()
-        self.classe_2028.place_forget()
-        self.classe_2029.place_forget()
-        self.classe_2030.place_forget()
-
+        self.combo_classe.place_forget()
         self.button_send1.place_forget()
         self.button_send2.place_forget()
-
         self.password1.place_forget()
-        self.password2.place_forget()   # login aussi
-        self.accueil_frame.pack(fill="both", expand=True)
+        self.password2.place_forget()   
         self.button_accueil.place_forget()
-        self.button_login.place(relx=0.25, rely=0.05, anchor="center")
-        self.button_register.place(relx=0.125, rely=0.05, anchor="center")
-        self.style_register(1)
-        self.style_login(1)
         self.email1.place_forget()
         self.email2.place_forget()
-
-    def show_mot_de_passe_oublié_frame(self):
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget()
+        self.button_send4.place_forget()
+        
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
+        self.button_register.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
+        self.style_register(1)
+        self.style_login(1)
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
+        
+        
+    def show_condidat_frame(self):
+        #CACHER LES AUTRES FRAMES
         self.login_frame.pack_forget()
         self.register_frame.pack_forget()
         self.accueil_frame.pack_forget()
+        self.mot_de_passe_oublié_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.condidat_frame.pack(fill="both", expand=True)
+
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
         self.prenom.place_forget()
         self.confirm.place_forget()
         self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget()   
+        self.email1.place_forget()
+        self.email2.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.button_send4.place_forget()
 
-        self.classe_2026.place_forget()
-        self.classe_2027.place_forget()
-        self.classe_2028.place_forget()
-        self.classe_2029.place_forget()
-        self.classe_2030.place_forget()
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
+        self.button_futurE.place(relx=0.17, rely=0.8, anchor="center",height=30,width=100)
+        self.button_currentE.place(relx=0.5, rely=0.8, anchor="center",height=30,width=100)
+        self.button_finishE.place(relx=0.83, rely=0.8, anchor="center",height=30,width=100)
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
+        
+        
+    def show_mot_de_passe_oublié_frame(self):
+        #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
 
+        #AFFICHER LA BONNE FRAME
+        self.accueil_frame.pack(fill="both", expand=True)
+
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
+        self.nom.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
         self.button_send1.place_forget()
         self.button_send2.place_forget()
         self.button_send4.place_forget()
         self.password1.place_forget()
-        self.password2.place_forget()   # login aussi
-        self.accueil_frame.pack(fill="both", expand=True)
-        self.button_accueil.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center")
         self.button_register.place(relx=0.125, rely=0.05, anchor="center")
         self.style_register(1)
         self.style_login(1)
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
+    
+    def show_futurE_frame(self):
+        # CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.mot_de_passe_oublié_frame.pack_forget()
+
+        # AFFICHER LA BONNE FRAME
+        self.futurE_frame.pack(fill="both", expand=True)
+
+        # CACHER LES ELEMENTS DES AUTRES FRAMES
+        self.nom.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
         self.email1.place_forget()
-        self.email2.place_forget() 
+        self.email2.place_forget()
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_send4.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget()
+        self.button_accueil.place_forget()
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget()
 
+        # AFFICHER ET PLACER LE BOUTON ACCUEIL
+        self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
 
+        # CHARGER ET AFFICHER LES ELECTIONS
+        self.afficher_elections_futur()
 
-
-
-
-
-
-
+        
+    # LES FONCTIONS DES BOUTTONS DE L'APPLICATION
     def register(self):
         email = self.email1.get()
         prenom = self.prenom.get()
         nom=self.nom.get()
         password=self.password1.get()
         date_naissance=self.date_entry.get()
-        classe=self.choix.get()
+        classe=self.combo_classe.get()
 
         # 1. Charger fichier étudiants
         with open("Fichier_Student_Json.json", "r") as f:
@@ -351,6 +527,8 @@ class App:
             self.email1.delete(0, tk.END)
             self.password1.delete(0, tk.END)
             self.confirm.delete(0, tk.END)
+
+
     def login(self):
         email = self.email2.get()
         password = self.password2.get()
@@ -369,14 +547,106 @@ class App:
                 break
 
         if utilisateur_trouve:
-            self.label_error = tk.Label(self.login_frame, text="connexion réussie", bg="white", fg="green", font=15)
+            self.show_condidat_frame()
         else:
             self.label_error = tk.Label(self.login_frame, text="email ou mot de passe incorrecte", bg="white", fg="red", font=15)
 
-        self.label_error.place(relx=0.3, rely=0.2, anchor="center", width=250)
+        self.label_error.place(relx=0.3, rely=0.3, anchor="center", width=250)
 
         self.email2.delete(0, tk.END)
         self.password2.delete(0, tk.END)
+    def afficher_elections_futur(self):
+        # Supprimer l'ancien canvas s'il existe
+        if hasattr(self, 'canvas_futur'):
+            self.canvas_futur.destroy()
+        if hasattr(self, 'scrollbar_futur'):
+            self.scrollbar_futur.destroy()
+
+        # Charger les élections depuis le fichier JSON
+        try:
+            with open("Fichier_Elections.json", "r", encoding="utf-8") as f:
+                elections = json.load(f)
+        except:
+            elections = []
+
+        # Filtrer les élections à venir (optionnel selon ta logique)
+        elections_futur = [e for e in elections if e.get("statut") == "futur"]
+
+        # Créer un canvas scrollable positionné sur la frame
+        self.canvas_futur = tk.Canvas(self.futurE_frame, bg="#7fafc0", highlightthickness=0)
+        self.scrollbar_futur = tk.Scrollbar(self.futurE_frame, orient="vertical", command=self.canvas_futur.yview)
+        self.canvas_futur.configure(yscrollcommand=self.scrollbar_futur.set)
+
+        # Positionner le canvas et la scrollbar sur la frame (zone centrale)
+        self.canvas_futur.place(relx=0.28, rely=0.27, relwidth=0.43, relheight=0.72)
+        self.scrollbar_futur.place(relx=0.72, rely=0.27, relheight=0.72)
+
+        # Frame intérieure dans le canvas
+        inner_frame = tk.Frame(self.canvas_futur, bg="#7fafc0")
+        canvas_window = self.canvas_futur.create_window((0, 0), window=inner_frame, anchor="nw")
+        def on_canvas_resize(event):
+            self.canvas_futur.itemconfig(canvas_window, width=event.width)
+        self.canvas_futur.bind("<Configure>", on_canvas_resize)
+
+        # Afficher chaque élection
+        for election in elections_futur:
+            self.creer_carte_election(inner_frame, election)
+
+        # Mettre à jour la scrollregion après le rendu
+        inner_frame.update_idletasks()
+        self.canvas_futur.configure(scrollregion=self.canvas_futur.bbox("all"))
+
+        # Scroll avec la molette
+        self.canvas_futur.bind("<MouseWheel>", lambda e: self.canvas_futur.yview_scroll(-1*(e.delta//120), "units"))
+
+    
+    def creer_carte_election(self, parent, election):
+        # Carte blanche pour chaque élection
+        carte = tk.Frame(parent, bg="white", bd=1, relief="solid")
+        carte.pack(fill="x", padx=10, pady=8, ipady=8)
+
+        # Titre
+        tk.Label(carte, text=election.get("titre", ""), bg="white",
+                font=("Arial", 11, "bold"), anchor="w").pack(anchor="w", padx=10, pady=(8, 2))
+
+        # Dates
+        tk.Label(carte, text=f"Date de départ d'élection :    {election.get('date_debut', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+        tk.Label(carte, text=f"Date de fin d'élection :           {election.get('date_fin', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+
+        # Frame pour les boutons
+        btn_frame = tk.Frame(carte, bg="white")
+        btn_frame.pack(fill="x", padx=10, pady=(7, 4))
+
+        # Bouton "Voir les candidats" - à gauche
+        tk.Button(btn_frame, text="Voir les condidats",
+          fg="white", bg="#073763",
+          activeforeground="white",
+          borderwidth=0, highlightthickness=0, relief="flat",
+          width=20, height=2,
+          command=lambda e=election: self.voir_candidats(e)
+          ).pack(side="left")
+
+        # Bouton "Postuler comme candidat" - à droite
+        tk.Button(btn_frame, text="Postuler comme candidat",
+          fg="white", bg="#073763",
+          activeforeground="white",
+          borderwidth=0, highlightthickness=0, relief="flat",
+          width=20, height=2,
+          command=lambda e=election: self.postuler_candidat(e)
+          ).pack(side="right")
+
+
+    def voir_candidats(self, election):
+        print(f"Voir candidats pour : {election.get('titre')}")
+        # Tu peux naviguer vers une autre frame ici
+
+
+    def postuler_candidat(self, election):
+        print(f"Postuler pour : {election.get('titre')}")
+        # Tu peux ouvrir un formulaire ici
+
     def fix_layout(self):
         # forcer recalcul des dimensions
         self.root.update_idletasks()
