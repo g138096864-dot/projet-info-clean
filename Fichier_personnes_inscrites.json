@@ -1,0 +1,18 @@
+[
+    {
+        "prenom": "Ait Elkadi",
+        "email": "Firdaous.AITELKADI@emines.um6p.ma",
+        "nom": "Firdaous",
+        "password": "f@06iaM01",
+        "date_naissance": "2006-05-01",
+        "classe": "2029"
+    },
+    {
+        "prenom": "NAIM",
+        "email": "Charifa.NAIM@emines.um6p.ma",
+        "nom": "Charifa",
+        "password": "12345678",
+        "date_naissance": "2007-01-29",
+        "classe": "2029"
+    }
+]
