@@ -15,7 +15,7 @@ class App:
         self.image_register = Image.open("Inscription.png")
         self.image_login = Image.open("Login.png")
         self.image_condidat = Image.open("condidat.png")
-        self.image_mot_de_passe_oublié = Image.open("mot de passe oblié1.png")
+        self.image_mpo = Image.open("mot de passe oblié1.png")
         self.image_futurE =  Image.open("elections a venir.png")
         self.image_currentE =  Image.open("elections en cours.png")
         self.image_finishE =  Image.open("ELECTIONS TERMINES.png")
@@ -24,7 +24,7 @@ class App:
         self.accueil_frame=tk.Frame(root)
         self.register_frame=tk.Frame(root)
         self.login_frame=tk.Frame(root)
-        self.mot_de_passe_oublié_frame=tk.Frame(root)
+        self.mpo_frame=tk.Frame(root)
         self.condidat_frame=tk.Frame(root)
         self.futurE_frame=tk.Frame(root)
         self.currentE_frame=tk.Frame(root)
@@ -54,8 +54,8 @@ class App:
         self.label_finishE = tk.Label(self.finishE_frame)
         self.label_finishE.pack(fill="both", expand=True)
 
-        self.label_mot_de_passe_oublié = tk.Label(self.mot_de_passe_oublié_frame)
-        self.mot_de_passe_oublié_frame.pack(fill="both", expand=True)
+        self.label_mpo = tk.Label(self.mpo_frame)
+        self.label_mpo.pack(fill="both", expand=True)
 
         # METTRE A JOUR L'IMAGE QUAND LA FENETRE CHANGE
 
@@ -66,7 +66,7 @@ class App:
         self.futurE_frame.bind("<Configure>", self.resize_image_futurE)
         self.currentE_frame.bind("<Configure>", self.resize_image_currentE)
         self.finishE_frame.bind("<Configure>", self.resize_image_finishE)
-        self.mot_de_passe_oublié_frame.bind("<Configure>", self.resize_image_mot_de_passe_oublié)
+        self.mpo_frame.bind("<Configure>", self.resize_image_mpo)
        
        # LES BOUTTONS DE L'APPLICATION
         self.button_register = tk.Button(root,
@@ -148,13 +148,13 @@ class App:
     highlightthickness=0,
     relief="flat",font=20,command=self.login)
         
-        self.button_send4 = tk.Button(root, text="Mot de passe oublié?",
+        self.button_mpo = tk.Button(root, text="Mot de passe oublié?",
     fg="black",              
     bg="white",           
     activeforeground="white",
     borderwidth=0,
     highlightthickness=0,
-    relief="flat",font=20,command=self.login)
+    relief="flat",font=20,command=self.show_mpo_frame)
 
         # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
@@ -233,12 +233,12 @@ class App:
             resized = self.image_finishE.resize((event.width, event.height))
             self.photo_finishE = ImageTk.PhotoImage(resized)
             self.label_finishE.config(image=self.photo_finishE)
-    def resize_image_mot_de_passe_oublié(self, event):
+    def resize_image_mpo(self, event):
          # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
-            resized = self.image_mot_de_passe_oublié.resize((event.width, event.height))
-            self.photo_mot_de_passe_oublié = ImageTk.PhotoImage(resized)
-            self.label_mot_de_passe_oublié.config(image=self.photo_mot_de_passe_oublié)
+            resized = self.image_mpo.resize((event.width, event.height))
+            self.photo_mpo = ImageTk.PhotoImage(resized)
+            self.label_mpo.config(image=self.photo_mpo)
         
         # LES FONCTION DE CHANGEMENT DU STYLE DES BOUTTONS
     def style_login(self, a):
@@ -258,7 +258,7 @@ class App:
         self.accueil_frame.pack_forget()
         self.login_frame.pack_forget()
         self.condidat_frame.pack_forget()
-        self.mot_de_passe_oublié_frame.pack_forget()
+        self.mpo_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
         self.register_frame.pack(fill="both", expand=True)
@@ -267,7 +267,7 @@ class App:
         self.button_register.place_forget()
         self.button_send2.place_forget()
         self.button_send3.place_forget()
-        self.button_send4.place_forget()
+        self.button_mpo.place_forget()
         self.email2.place_forget()
         self.password2.place_forget()
 
@@ -292,7 +292,7 @@ class App:
         #CACHER LES AUTRES FRAMES
         self.accueil_frame.pack_forget()
         self.register_frame.pack_forget()
-        self.mot_de_passe_oublié_frame.pack_forget()
+        self.mpo_frame.pack_forget()
         self.condidat_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
@@ -314,7 +314,7 @@ class App:
         self.button_register.place(relx=0.82, rely=0.55, anchor="center",height=30,width=100)
         self.style_register(2)
         self.button_send2.place(relx=0.48, rely=0.5, anchor="center",width=150,height=35)
-        self.button_send4.place(relx=0.3, rely=0.56, anchor="center") 
+        self.button_mpo.place(relx=0.3, rely=0.56, anchor="center") 
 
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
         self.email2.place(relx=0.3, rely=0.4, anchor="center",width=320,height=30)
@@ -326,7 +326,7 @@ class App:
         self.login_frame.pack_forget()
         self.condidat_frame.pack_forget()
         self.register_frame.pack_forget()
-        self.mot_de_passe_oublié_frame.pack_forget()
+        self.mpo_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
         self.accueil_frame.pack(fill="both", expand=True)
@@ -347,7 +347,7 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_send4.place_forget()
+        self.button_mpo.place_forget()
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -362,7 +362,7 @@ class App:
         self.login_frame.pack_forget()
         self.register_frame.pack_forget()
         self.accueil_frame.pack_forget()
-        self.mot_de_passe_oublié_frame.pack_forget()
+        self.mpo_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
         self.condidat_frame.pack(fill="both", expand=True)
@@ -381,7 +381,7 @@ class App:
         self.email2.place_forget()
         self.button_login.place_forget()
         self.button_register.place_forget()
-        self.button_send4.place_forget()
+        self.button_mpo.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
@@ -391,18 +391,24 @@ class App:
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
         
         
-    def show_mot_de_passe_oublié_frame(self):
+    def show_mpo_frame(self):
         #CACHER LES AUTRES FRAMES
         self.login_frame.pack_forget()
         self.register_frame.pack_forget()
         self.accueil_frame.pack_forget()
         self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+
 
         #AFFICHER LA BONNE FRAME
-        self.accueil_frame.pack(fill="both", expand=True)
+        self.mpo_frame.pack(fill="both", expand=True)
 
         #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
         self.prenom.place_forget()
         self.confirm.place_forget()
         self.date_entry.place_forget()
@@ -411,7 +417,7 @@ class App:
         self.email2.place_forget() 
         self.button_send1.place_forget()
         self.button_send2.place_forget()
-        self.button_send4.place_forget()
+        self.button_mpo.place_forget()
         self.password1.place_forget()
         self.password2.place_forget() 
         self.button_accueil.place_forget() 
@@ -420,10 +426,7 @@ class App:
         self.button_finishE.place_forget() 
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
-        self.button_login.place(relx=0.25, rely=0.05, anchor="center")
-        self.button_register.place(relx=0.125, rely=0.05, anchor="center")
-        self.style_register(1)
-        self.style_login(1)
+        
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
     
     def show_futurE_frame(self):
@@ -432,7 +435,7 @@ class App:
         self.register_frame.pack_forget()
         self.accueil_frame.pack_forget()
         self.condidat_frame.pack_forget()
-        self.mot_de_passe_oublié_frame.pack_forget()
+        self.mpo_frame.pack_forget()
 
         # AFFICHER LA BONNE FRAME
         self.futurE_frame.pack(fill="both", expand=True)
@@ -447,7 +450,7 @@ class App:
         self.email2.place_forget()
         self.button_send1.place_forget()
         self.button_send2.place_forget()
-        self.button_send4.place_forget()
+        self.button_mpo.place_forget()
         self.password1.place_forget()
         self.password2.place_forget()
         self.button_accueil.place_forget()
