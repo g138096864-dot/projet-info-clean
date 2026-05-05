@@ -283,11 +283,8 @@ class App:
         self.button_mpo.place_forget()
         self.email2.place_forget()
         self.password2.place_forget()
-<<<<<<< Updated upstream
         self.button_candidat.place_forget()
-=======
         self.ecole.place_forget()
->>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
@@ -326,11 +323,8 @@ class App:
         self.button_login.place_forget()
         self.combo_classe.place_forget()
         self.button_send1.place_forget()
-<<<<<<< Updated upstream
         self.button_candidat.place_forget()
-=======
         self.ecole.place_forget()
->>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
@@ -374,11 +368,8 @@ class App:
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
         self.button_mpo.place_forget()
-<<<<<<< Updated upstream
         self.button_candidat.place_forget()
-=======
         self.ecole.place_forget()
->>>>>>> Stashed changes
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -416,11 +407,8 @@ class App:
         self.button_login.place_forget()
         self.button_register.place_forget()
         self.button_mpo.place_forget()
-<<<<<<< Updated upstream
-        self.button_candidat.place_forget()
-=======
         self.ecole.place_forget()
->>>>>>> Stashed changes
+        self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
