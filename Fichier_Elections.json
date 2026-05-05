@@ -9,13 +9,13 @@
         "titre": "Élection du bureau des étudiants43",
         "date_debut": "01/03/2026 à  95:00",
         "date_fin": "02/03/2026 à  9:00",
-        "statut": "futur"
+        "statut": "en cours"
     },
     {
         "titre": "Élection du délégué de classe28",
         "date_debut": "01/01/2026 à  4:00",
         "date_fin": "01/01/2026 à  00:10",
-        "statut": "futur"
+        "statut": "terminé"
     },
     {
         "titre": "Élection du bureau des étudiants45",
@@ -27,12 +27,12 @@
         "titre": "Élection du délégué de classe33",
         "date_debut": "01/01/2026 à  55:00",
         "date_fin": "01/01/2026 à  34:10",
-        "statut": "futur"
+        "statut": "en cours"
     },
     {
         "titre": "Élection du bureau des étudiants22",
         "date_debut": "01/03/2026 à  34:00",
         "date_fin": "02/03/2026 à  45:00",
-        "statut": "futur"
+        "statut": "terminé"
     }
 ]

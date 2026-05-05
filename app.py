@@ -104,7 +104,7 @@ class App:
     activeforeground="white",
     borderwidth=0,
     highlightthickness=0,
-    relief="flat")
+    relief="flat",command=self.show_currentE_frame)
         self.button_currentE.place(relx=0.24, rely=0.05, anchor="center")
 
         self.button_finishE= tk.Button(root, text="Accéder",
@@ -156,6 +156,14 @@ class App:
     borderwidth=0,
     highlightthickness=0,
     relief="flat",font=20,command=self.show_mpo_frame)
+        
+        self.button_candidat = tk.Button(root, text="Page candidat",
+    fg="white",              
+    bg="#048b9a",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat",font=20,command=self.show_condidat_frame)
 
         # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
@@ -271,6 +279,7 @@ class App:
         self.button_mpo.place_forget()
         self.email2.place_forget()
         self.password2.place_forget()
+        self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
@@ -309,6 +318,7 @@ class App:
         self.button_login.place_forget()
         self.combo_classe.place_forget()
         self.button_send1.place_forget()
+        self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
@@ -328,6 +338,9 @@ class App:
         self.condidat_frame.pack_forget()
         self.register_frame.pack_forget()
         self.mpo_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
         self.accueil_frame.pack(fill="both", expand=True)
@@ -349,6 +362,7 @@ class App:
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
         self.button_mpo.place_forget()
+        self.button_candidat.place_forget()
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -364,6 +378,9 @@ class App:
         self.register_frame.pack_forget()
         self.accueil_frame.pack_forget()
         self.mpo_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
 
         #AFFICHER LA BONNE FRAME
         self.condidat_frame.pack(fill="both", expand=True)
@@ -383,6 +400,7 @@ class App:
         self.button_login.place_forget()
         self.button_register.place_forget()
         self.button_mpo.place_forget()
+        self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
@@ -424,6 +442,7 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
        
@@ -436,6 +455,8 @@ class App:
         self.accueil_frame.pack_forget()
         self.condidat_frame.pack_forget()
         self.mpo_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
 
         # AFFICHER LA BONNE FRAME
         self.futurE_frame.pack(fill="both", expand=True)
@@ -460,9 +481,45 @@ class App:
 
         # AFFICHER ET PLACER LE BOUTON ACCUEIL
         self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
-
+        self.button_candidat.place(relx=0.15, rely=0.06, anchor="center", height=30, width=150)
         # CHARGER ET AFFICHER LES ELECTIONS
         self.afficher_elections_futur()
+    def show_currentE_frame(self):
+        # CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.mpo_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+
+        # AFFICHER LA BONNE FRAME
+        self.currentE_frame.pack(fill="both", expand=True)
+
+        # CACHER LES ELEMENTS DES AUTRES FRAMES
+        self.nom.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget()
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget()
+        self.button_accueil.place_forget()
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget()
+
+        # AFFICHER ET PLACER LE BOUTON ACCUEIL
+        self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
+        self.button_candidat.place(relx=0.15, rely=0.06, anchor="center", height=30, width=150)
+        # CHARGER ET AFFICHER LES ELECTIONS
+        self.afficher_elections_encours()
 
         
     # LES FONCTIONS DES BOUTTONS DE L'APPLICATION
@@ -587,13 +644,13 @@ class App:
         # Frame intérieure dans le canvas
         inner_frame = tk.Frame(self.canvas_futur, bg="#7fafc0")
         canvas_window = self.canvas_futur.create_window((0, 0), window=inner_frame, anchor="nw")
-        def on_canvas_resize(event):
+        def on_canvas_resize1(event):
             self.canvas_futur.itemconfig(canvas_window, width=event.width)
-        self.canvas_futur.bind("<Configure>", on_canvas_resize)
+        self.canvas_futur.bind("<Configure>", on_canvas_resize1)
 
         # Afficher chaque élection
         for election in elections_futur:
-            self.creer_carte_election(inner_frame, election)
+            self.creer_carte_election_futur(inner_frame, election)
 
         # Mettre à jour la scrollregion après le rendu
         inner_frame.update_idletasks()
@@ -603,7 +660,7 @@ class App:
         self.canvas_futur.bind("<MouseWheel>", lambda e: self.canvas_futur.yview_scroll(-1*(e.delta//120), "units"))
 
     
-    def creer_carte_election(self, parent, election):
+    def creer_carte_election_futur(self, parent, election):
         # Carte blanche pour chaque élection
         carte = tk.Frame(parent, bg="white", bd=1, relief="solid")
         carte.pack(fill="x", padx=10, pady=8, ipady=8)
@@ -639,6 +696,88 @@ class App:
           width=20, height=2,
           command=lambda e=election: self.postuler_candidat(e)
           ).pack(side="right")
+    
+    def afficher_elections_encours(self):
+        # Supprimer l'ancien canvas s'il existe
+        if hasattr(self, 'canvas_encours'):
+            self.canvas_encours.destroy()
+        if hasattr(self, 'scrollbar_encours'):
+            self.scrollbar_encours.destroy()
+
+        # Charger les élections depuis le fichier JSON
+        try:
+            with open("Fichier_Elections.json", "r", encoding="utf-8") as f:
+                elections = json.load(f)
+        except:
+            elections = []
+
+        # Filtrer les élections à venir (optionnel selon ta logique)
+        elections_encours = [e for e in elections if e.get("statut") == "en cours"]
+
+        # Créer un canvas scrollable positionné sur la frame
+        self.canvas_encours = tk.Canvas(self.currentE_frame, bg="#7fafc0", highlightthickness=0)
+        self.scrollbar_encours = tk.Scrollbar(self.currentE_frame, orient="vertical", command=self.canvas_encours.yview)
+        self.canvas_encours.configure(yscrollcommand=self.scrollbar_encours.set)
+
+        # Positionner le canvas et la scrollbar sur la frame (zone centrale)
+        self.canvas_encours.place(relx=0.28, rely=0.27, relwidth=0.43, relheight=0.72)
+        self.scrollbar_encours.place(relx=0.72, rely=0.27, relheight=0.72)
+
+        # Frame intérieure dans le canvas
+        inner_frame = tk.Frame(self.canvas_encours, bg="#7fafc0")
+        canvas_window = self.canvas_encours.create_window((0, 0), window=inner_frame, anchor="nw")
+        def on_canvas_resize2(event):
+            self.canvas_encours.itemconfig(canvas_window, width=event.width)
+        self.canvas_encours.bind("<Configure>", on_canvas_resize2)
+
+        # Afficher chaque élection
+        for election in elections_encours:
+            self.creer_carte_election_encours(inner_frame, election)
+
+        # Mettre à jour la scrollregion après le rendu
+        inner_frame.update_idletasks()
+        self.canvas_encours.configure(scrollregion=self.canvas_encours.bbox("all"))
+
+        # Scroll avec la molette
+        self.canvas_encours.bind("<MouseWheel>", lambda e: self.canvas_encours.yview_scroll(-1*(e.delta//120), "units"))
+
+    
+    def creer_carte_election_encours(self, parent, election):
+        # Carte blanche pour chaque élection
+        carte = tk.Frame(parent, bg="white", bd=1, relief="solid")
+        carte.pack(fill="x", padx=10, pady=8, ipady=8)
+
+        # Titre
+        tk.Label(carte, text=election.get("titre", ""), bg="white",
+                font=("Arial", 11, "bold"), anchor="w").pack(anchor="w", padx=10, pady=(8, 2))
+
+        # Dates
+        tk.Label(carte, text=f"Date de départ d'élection :    {election.get('date_debut', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+        tk.Label(carte, text=f"Date de fin d'élection :           {election.get('date_fin', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+
+        # Frame pour les boutons
+        btn_frame = tk.Frame(carte, bg="white")
+        btn_frame.pack(fill="x", padx=10, pady=(7, 4))
+
+        # Bouton "Voir les candidats" - à gauche
+        tk.Button(btn_frame, text="Voir les condidats",
+          fg="white", bg="#073763",
+          activeforeground="white",
+          borderwidth=0, highlightthickness=0, relief="flat",
+          width=20, height=2,
+          command=lambda e=election: self.voir_candidats(e)
+          ).pack(side="left")
+
+        # Bouton "Postuler comme candidat" - à droite
+        tk.Button(btn_frame, text="Participer au vote",
+          fg="white", bg="#073763",
+          activeforeground="white",
+          borderwidth=0, highlightthickness=0, relief="flat",
+          width=20, height=2,
+          command=lambda e=election: self.participer_vote(e)
+          ).pack(side="right")
 
 
     def voir_candidats(self, election):
@@ -648,6 +787,10 @@ class App:
 
     def postuler_candidat(self, election):
         print(f"Postuler pour : {election.get('titre')}")
+        # Tu peux ouvrir un formulaire ici
+
+    def participer_vote(self, election):
+        print(f"voter dans : {election.get('titre')}")
         # Tu peux ouvrir un formulaire ici
 
     def fix_layout(self):
