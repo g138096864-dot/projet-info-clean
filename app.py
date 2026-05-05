@@ -154,7 +154,11 @@ class App:
     activeforeground="white",
     borderwidth=0,
     highlightthickness=0,
+<<<<<<< Updated upstream
     relief="flat",font=20,command=self.show_mpo_frame)
+=======
+    relief="flat",font=20,command=self.show_mot_de_passe_oublié_frame)
+>>>>>>> Stashed changes
 
         # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
@@ -398,12 +402,20 @@ class App:
         self.accueil_frame.pack_forget()
         self.condidat_frame.pack_forget()
         self.futurE_frame.pack_forget()
+<<<<<<< Updated upstream
         self.currentE_frame.pack_forget()
         self.finishE_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
         self.mpo_frame.pack(fill="both", expand=True)
+=======
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.mot_de_passe_oublié_frame.pack(fill="both", expand=True)
+>>>>>>> Stashed changes
 
         #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
@@ -426,9 +438,13 @@ class App:
         self.button_finishE.place_forget() 
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+<<<<<<< Updated upstream
         a=5
         print(a)
 
+=======
+       
+>>>>>>> Stashed changes
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
     
     def show_futurE_frame(self):
