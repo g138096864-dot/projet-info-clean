@@ -165,6 +165,7 @@ class App:
     highlightthickness=0,
     relief="flat",font=20,command=self.show_condidat_frame)
 
+
         # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
         self.root.config(menu=self.menu_bar)
@@ -178,7 +179,7 @@ class App:
 
         self.email2=tk.Entry(root,bg="#eeeeee")
         self.password2=tk.Entry(root,bg="#eeeeee",show="*")
-
+        
         self.label_mail=tk.Label(self.login_frame,text="Email",fg="black",font=14,bg="white")
         self.label_mail.place(relx=0.2, rely=0.35, anchor="center",width=320,height=30)
 
@@ -192,6 +193,9 @@ class App:
         self.confirm=tk.Entry(root,bg="#eeeeee",show="*")
 
         self.date_entry = DateEntry(root, date_pattern='yyyy-mm-dd',bg="#eeeeee")
+
+        self.ecole=tk.Entry(root,bg="#CBC6C6")
+        
 
         classes=["2026","2027","2028","2029","2030"]
         self.combo_classe = ttk.Combobox(root, values=classes, state="normal")  # "normal" = on peut écrire
@@ -279,7 +283,11 @@ class App:
         self.button_mpo.place_forget()
         self.email2.place_forget()
         self.password2.place_forget()
+<<<<<<< Updated upstream
         self.button_candidat.place_forget()
+=======
+        self.ecole.place_forget()
+>>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
@@ -318,7 +326,11 @@ class App:
         self.button_login.place_forget()
         self.combo_classe.place_forget()
         self.button_send1.place_forget()
+<<<<<<< Updated upstream
         self.button_candidat.place_forget()
+=======
+        self.ecole.place_forget()
+>>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
@@ -362,7 +374,11 @@ class App:
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
         self.button_mpo.place_forget()
+<<<<<<< Updated upstream
         self.button_candidat.place_forget()
+=======
+        self.ecole.place_forget()
+>>>>>>> Stashed changes
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -400,7 +416,11 @@ class App:
         self.button_login.place_forget()
         self.button_register.place_forget()
         self.button_mpo.place_forget()
+<<<<<<< Updated upstream
         self.button_candidat.place_forget()
+=======
+        self.ecole.place_forget()
+>>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
@@ -445,7 +465,8 @@ class App:
         self.button_candidat.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
-       
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+        self.ecole.place(relx=0.48, rely=0.4, anchor="center",width=600,height=35)
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
     
     def show_futurE_frame(self):
@@ -478,6 +499,7 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.ecole.place_forget()
 
         # AFFICHER ET PLACER LE BOUTON ACCUEIL
         self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
