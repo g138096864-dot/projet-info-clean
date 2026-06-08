@@ -383,11 +383,14 @@ class App:
         self.password2.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
+<<<<<<< HEAD
         self.nom1.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
         
+=======
+>>>>>>> c30c4aececffa1ab6e8fd4593b4068f5d97c6cd2
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_send1.place(relx=0.71, rely=0.83, anchor="center",width=100)
@@ -435,11 +438,14 @@ class App:
         self.button_send1.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
+<<<<<<< HEAD
         self.nom1.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
         
+=======
+>>>>>>> c30c4aececffa1ab6e8fd4593b4068f5d97c6cd2
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
@@ -492,11 +498,14 @@ class App:
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
+<<<<<<< HEAD
         self.nom1.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
         
+=======
+>>>>>>> c30c4aececffa1ab6e8fd4593b4068f5d97c6cd2
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -541,6 +550,7 @@ class App:
         self.button_login.place_forget()
         self.button_register.place_forget()
         self.button_mpo.place_forget()
+<<<<<<< HEAD
         self.button_candidat.place_forget()
         self.ecole.place_forget()
         self.nom1.place_forget()
@@ -548,6 +558,10 @@ class App:
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
         
+=======
+        self.ecole.place_forget()
+        self.button_candidat.place_forget()
+>>>>>>> c30c4aececffa1ab6e8fd4593b4068f5d97c6cd2
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
