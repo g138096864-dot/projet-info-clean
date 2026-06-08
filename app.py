@@ -509,12 +509,9 @@ class App:
 
         self.nom1.place_forget()
         self.prenom1.place_forget()
-        self.combo_classe1.place_forget()
         self.motivation.place_forget()
         
 
-        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
-        self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
         self.button_register.place(relx=0.82, rely=0.55, anchor="center",height=30,width=100)
         self.style_register(2)
         self.button_send2.place(relx=0.48, rely=0.5, anchor="center",width=150,height=35)
@@ -2480,8 +2477,6 @@ class App:
 
         # relancer affichage accueil pour repositionner correctement
         self.show_accueil_frame()
-
-
 
 root = tk.Tk()
 app = App(root)
