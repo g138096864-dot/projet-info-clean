@@ -11,8 +11,9 @@
         "prenom": "NAIM",
         "email": "Charifa.NAIM@emines.um6p.ma",
         "nom": "Charifa",
-        "password": "12345678",
+        "password": "00000000",
         "date_naissance": "2007-01-29",
-        "classe": "2029"
+        "classe": "2029",
+        "question_secrete": "azerty"
     }
 ]

@@ -20,7 +20,8 @@ class App:
         self.image_futurE =  Image.open("elections a venir.png")
         self.image_currentE =  Image.open("elections en cours.png")
         self.image_finishE =  Image.open("ELECTIONS TERMINES.png")
-
+        self.image_nmpo = Image.open("nouveau mot de passe.png")
+        self.image_admin = Image.open("Admin.png")
         # CREATION DES FRAMES : 
         self.accueil_frame=tk.Frame(root)
         self.register_frame=tk.Frame(root)
@@ -30,7 +31,8 @@ class App:
         self.futurE_frame=tk.Frame(root)
         self.currentE_frame=tk.Frame(root)
         self.finishE_frame=tk.Frame(root)
-
+        self.nmpo_frame=tk.Frame(root)
+        self.admin_frame=tk.Frame(root)
         # PACKAGE DES FRAMES :
         self.accueil_frame.pack(fill="both", expand=True)
 
@@ -58,6 +60,11 @@ class App:
         self.label_mpo = tk.Label(self.mpo_frame)
         self.label_mpo.pack(fill="both", expand=True)
 
+        self.label_nmpo = tk.Label(self.nmpo_frame)
+        self.label_nmpo.pack(fill="both", expand=True)
+
+        self.label_admin = tk.Label(self.admin_frame)
+        self.label_admin.pack(fill="both", expand=True)
         # METTRE A JOUR L'IMAGE QUAND LA FENETRE CHANGE
 
         self.accueil_frame.bind("<Configure>", self.resize_image_accueil)
@@ -68,7 +75,8 @@ class App:
         self.currentE_frame.bind("<Configure>", self.resize_image_currentE)
         self.finishE_frame.bind("<Configure>", self.resize_image_finishE)
         self.mpo_frame.bind("<Configure>", self.resize_image_mpo)
-       
+        self.nmpo_frame.bind("<Configure>", self.resize_image_nmpo)
+        self.admin_frame.bind("<Configure>", self.resize_image_admin)
        # LES BOUTTONS DE L'APPLICATION
         self.button_register = tk.Button(root,
     text="S'inscrire",
@@ -149,13 +157,13 @@ class App:
     highlightthickness=0,
     relief="flat",font=20,command=self.login)
         
-        self.button_mpo = tk.Button(root, text="Mot de passe oublié?",
+        self.button_mpo = tk.Button(self.login_frame, text="Mot de passe oublié?",
     fg="black",              
     bg="white",           
     activeforeground="white",
     borderwidth=0,
     highlightthickness=0,
-    relief="flat",font=20,command=self.show_mpo_frame)
+    relief="flat",font=20,command=self.mp)
         
         self.button_candidat = tk.Button(root, text="Page candidat",
     fg="white",              
@@ -164,7 +172,25 @@ class App:
     borderwidth=0,
     highlightthickness=0,
     relief="flat",font=20,command=self.show_condidat_frame)
-
+    
+        self.button_verifier = tk.Button(self.mpo_frame, text="Vérifier",
+    fg="white",              
+    bg="#048b9a",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    font=("Arial", 18),
+    relief="flat",command=self.verifier)
+        
+        self.button_creer = tk.Button(self.nmpo_frame, text="Créer",
+    fg="white",              
+    bg="#048b9a",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    font=("Arial", 18),
+    relief="flat",command=self.nmpof)
+        
 
         # LES AUTRES ELEMENT DE L'APPLICATION
         self.menu_bar = tk.Menu(root)
@@ -186,6 +212,15 @@ class App:
         self.label_password=tk.Label(self.login_frame,text="Mot de passe",fg="black",font=14,bg="white")
         self.label_password.place(relx=0.22, rely=0.45, anchor="center",width=320,height=30)
 
+        self.label_npass=tk.Label(self.nmpo_frame,text="Saisir le nouveau mot de passe",fg="black",font=14,bg="white")
+        self.label_npass.place(relx=0.37, rely=0.4, anchor="center",width=320,height=30)
+
+        self.label_cpass=tk.Label(self.nmpo_frame,text="Confirmer le nouveau mot de passe",fg="black",font=14,bg="white")
+        self.label_cpass.place(relx=0.38, rely=0.5, anchor="center",width=320,height=30)
+
+        self.npassword=tk.Entry(self.nmpo_frame,bg="#eeeeee",show="*")
+        self.cpassword=tk.Entry(self.nmpo_frame,bg="#eeeeee",show="*")
+
         self.prenom=tk.Entry(root,bg="#eeeeee")
         
         self.nom=tk.Entry(root,bg="#eeeeee")
@@ -196,13 +231,24 @@ class App:
 
         self.ecole=tk.Entry(root,bg="#CBC6C6")
         
+        self.question=tk.Entry(root,bg="#eeeeee")
+        
+        self.label_question = tk.Label(self.register_frame,text="Question secrète\nQuel est le nom de ton école primaire ?",
+                                       bg="#B4C9DE",fg="black",font=("italic", 12, "bold"),justify="left")
+        self.label_question.place(relx=0.83,rely=0.53,anchor="center")
 
         classes=["2026","2027","2028","2029","2030"]
         self.combo_classe = ttk.Combobox(root, values=classes, state="normal")  # "normal" = on peut écrire
         self.combo_classe.set("classe")
         self.root.after(100, self.fix_layout)
 
-       
+        self.role = tk.StringVar(value="Admin")
+        self.radio_admin = tk.Radiobutton(self.login_frame,text="Admin",variable=self.role,value="Admin",bg="white", font=("Arial", 13, "bold"),)
+        self.radio_candidat = tk.Radiobutton(self.login_frame,text="Candidat",variable=self.role,value="Candidat",bg="white", font=("Arial", 13, "bold"),)
+        self.radio_admin.place(relx=0.23, rely=0.68, anchor="center")
+        self.radio_candidat.place(relx=0.235, rely=0.74, anchor="center")
+
+
         # LES FONCTIONS D'AJUSTEMENT DE TAILLE
     def resize_image_accueil(self, event):
         # éviter bug quand fenêtre très petite
@@ -252,7 +298,21 @@ class App:
             resized = self.image_mpo.resize((event.width, event.height))
             self.photo_mpo = ImageTk.PhotoImage(resized)
             self.label_mpo.config(image=self.photo_mpo)
+
+    def resize_image_nmpo(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_nmpo.resize((event.width, event.height))
+            self.photo_nmpo = ImageTk.PhotoImage(resized)
+            self.label_nmpo.config(image=self.photo_nmpo)
         
+
+    def resize_image_admin(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_admin.resize((event.width, event.height))
+            self.photo_admin = ImageTk.PhotoImage(resized)
+            self.label_admin.config(image=self.photo_admin)
         # LES FONCTION DE CHANGEMENT DU STYLE DES BOUTTONS
     def style_login(self, a):
         if a==1:
@@ -266,13 +326,15 @@ class App:
             self.button_register.config(bg="#9fc5f8",font=20,fg="black")
 
         # LES FONCTION D'AFFICHAGE DES FRAMES 
+
     def show_register_frame(self):
         #CACHER LES AUTRES FRAMES 
         self.accueil_frame.pack_forget()
         self.login_frame.pack_forget()
         self.condidat_frame.pack_forget()
         self.mpo_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.register_frame.pack(fill="both", expand=True)
         
@@ -300,7 +362,7 @@ class App:
         self.confirm.place(relx=0.8, rely=0.47, anchor="center",width=180,height=30)
         self.date_entry.place(relx=0.56, rely=0.47, anchor="center",width=180,height=30)
         self.combo_classe.place(relx=0.56, rely=0.58, anchor="center",width=180,height=30)
-        
+        self.question.place(relx=0.8, rely=0.58, anchor="center",width=180,height=30)
         
        
     def show_login_frame(self):
@@ -309,7 +371,8 @@ class App:
         self.register_frame.pack_forget()
         self.mpo_frame.pack_forget()
         self.condidat_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.login_frame.pack(fill="both", expand=True)
         
@@ -325,6 +388,7 @@ class App:
         self.button_send1.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
+        self.question.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.13, rely=0.08, anchor="center",height=30,width=100)
@@ -347,7 +411,8 @@ class App:
         self.futurE_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.finishE_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.accueil_frame.pack(fill="both", expand=True)
 
@@ -370,6 +435,7 @@ class App:
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
+        self.question.place_forget()
         
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_login.place(relx=0.25, rely=0.05, anchor="center",height=30,width=100)
@@ -388,7 +454,8 @@ class App:
         self.futurE_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.finishE_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.condidat_frame.pack(fill="both", expand=True)
 
@@ -409,6 +476,7 @@ class App:
         self.button_mpo.place_forget()
         self.ecole.place_forget()
         self.button_candidat.place_forget()
+        self.question.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.125, rely=0.05, anchor="center",height=30,width=100)
@@ -427,7 +495,8 @@ class App:
         self.futurE_frame.pack_forget()
         self.finishE_frame.pack_forget()
         self.currentE_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.mpo_frame.pack(fill="both", expand=True)
 
@@ -451,12 +520,95 @@ class App:
         self.button_currentE.place_forget()
         self.button_finishE.place_forget() 
         self.button_candidat.place_forget()
+        self.question.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
         self.ecole.place(relx=0.48, rely=0.4, anchor="center",width=600,height=35)
+        self.button_verifier.place(relx=0.48, rely=0.49, anchor="center",width=150,height=50)
         #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
-    
+    def show_nmpo_frame(self):
+        #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.mpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
+        #AFFICHER LA BONNE FRAME
+        self.nmpo_frame.pack(fill="both", expand=True)
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
+        self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
+        self.question.place_forget()
+        self.ecole.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+
+        self.npassword.place(relx=0.48, rely=0.45, anchor="center",width=600,height=35)
+        self.cpassword.place(relx=0.48, rely=0.55, anchor="center",width=600,height=35)
+        self.button_creer.place(relx=0.49, rely=0.65, anchor="center",width=200,height=35)
+
+    def show_admin_frame(self):
+        #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.mpo_frame.pack_forget()
+        #AFFICHER LA BONNE FRAME
+        self.admin_frame.pack(fill="both", expand=True)
+        #CACHER LES ELEMENTS DES AUTRES FRAMES
+        self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
+        self.question.place_forget()
+        self.ecole.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+
+
     def show_futurE_frame(self):
         # CACHER LES AUTRES FRAMES
         self.login_frame.pack_forget()
@@ -466,7 +618,8 @@ class App:
         self.mpo_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.finishE_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         # AFFICHER LA BONNE FRAME
         self.futurE_frame.pack(fill="both", expand=True)
 
@@ -488,7 +641,7 @@ class App:
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
         self.ecole.place_forget()
-
+        self.question.place_forget()
         # AFFICHER ET PLACER LE BOUTON ACCUEIL
         self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
         self.button_candidat.place(relx=0.15, rely=0.06, anchor="center", height=30, width=150)
@@ -503,7 +656,8 @@ class App:
         self.mpo_frame.pack_forget()
         self.futurE_frame.pack_forget()
         self.finishE_frame.pack_forget()
-
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
         # AFFICHER LA BONNE FRAME
         self.currentE_frame.pack(fill="both", expand=True)
 
@@ -524,6 +678,7 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.question.place_forget()
 
         # AFFICHER ET PLACER LE BOUTON ACCUEIL
         self.button_accueil.place(relx=0.05, rely=0.06, anchor="center", height=30, width=100)
@@ -540,7 +695,7 @@ class App:
         password=self.password1.get()
         date_naissance=self.date_entry.get()
         classe=self.combo_classe.get()
-
+        Qs=self.question.get()
         # 1. Charger fichier étudiants
         with open("Fichier_Student_Json.json", "r") as f:
             students = json.load(f)
@@ -561,6 +716,7 @@ class App:
             self.email1.delete(0, tk.END)
             self.password1.delete(0, tk.END)
             self.confirm.delete(0, tk.END)
+            self.question.delete(0, tk.END)
             return
 
         # 3. Charger inscrits
@@ -582,7 +738,8 @@ class App:
             "nom" : nom,
             "password" : password,
             "date_naissance" : date_naissance,
-            "classe" : classe
+            "classe" : classe,
+            "question_secrete" : Qs
         })
 
         # 5. Sauvegarder
@@ -597,11 +754,13 @@ class App:
             self.email1.delete(0, tk.END)
             self.password1.delete(0, tk.END)
             self.confirm.delete(0, tk.END)
+            self.question.delete(0, tk.END)
 
 
     def login(self):
         email = self.email2.get()
         password = self.password2.get()
+        statut=self.role.get()
 
         try:
             with open("Fichier_personnes_inscrites.json", "r") as f:
@@ -616,15 +775,103 @@ class App:
                 utilisateur_trouve = True
                 break
 
-        if utilisateur_trouve:
-            self.show_condidat_frame()
+        if utilisateur_trouve :
+            if statut=="Candidat":
+                self.show_condidat_frame()
+            else:
+                self.show_admin_frame()
         else:
             self.label_error = tk.Label(self.login_frame, text="email ou mot de passe incorrecte", bg="white", fg="red", font=15)
 
-        self.label_error.place(relx=0.3, rely=0.3, anchor="center", width=250)
+            self.label_error.place(relx=0.3, rely=0.3, anchor="center", width=250)
 
         self.email2.delete(0, tk.END)
         self.password2.delete(0, tk.END)
+
+    def verifier(self):
+        questions= self.ecole.get()
+        email = self.email2.get()
+        try:
+            with open("Fichier_personnes_inscrites.json", "r") as f:
+                inscrits = json.load(f)
+        except:
+            inscrits = []
+
+        utilisateur_trouve = False
+
+        for personne in inscrits:
+            if personne["email"] == email and personne["question_secrete" ] == questions :
+                utilisateur_trouve = True
+                break
+
+        if utilisateur_trouve:
+            self.show_nmpo_frame()
+        else:
+            self.label_error = tk.Label(self.mpo_frame, text="incorrect", bg="white", fg="red", font=15)
+
+        self.label_error.place(relx=0.48, rely=0.45, anchor="center", width=250)
+
+        self.ecole.delete(0, tk.END)
+
+    def mp(self):
+        email = self.email2.get()
+        try:
+            with open("Fichier_personnes_inscrites.json", "r") as f:
+                inscrits = json.load(f)
+        except:
+            inscrits = []
+
+        utilisateur_trouve = False
+
+        for personne in inscrits:
+            if personne["email"] == email  :
+                utilisateur_trouve = True
+                self.email_reset = email
+                break
+
+        if utilisateur_trouve:
+            self.show_mpo_frame()
+        else:
+            self.label_error = tk.Label(self.login_frame, text="Saisir votre email ", bg="white", fg="red", font=15)
+
+        self.label_error.place(relx=0.3, rely=0.59, anchor="center", width=250)
+
+        self.email2.delete(0, tk.END)
+
+    def nmpof(self):
+        email = self.email_reset
+        passwordn= self.npassword.get()
+        passwordc= self.cpassword.get()
+
+        try:
+            with open("Fichier_personnes_inscrites.json", "r") as f:
+                inscrits = json.load(f)
+        except:
+            inscrits = []
+
+        utilisateur_trouve = False
+
+        for personne in inscrits:
+            if personne["email"] == email and passwordn==passwordc :
+                utilisateur_trouve = True 
+                personne["password"] = passwordn
+                break
+
+        if utilisateur_trouve:
+            with open("Fichier_personnes_inscrites.json", "w") as f:
+                json.dump(inscrits, f, indent=4)
+        
+            self.show_login_frame()
+           
+        else:
+            self.label_error = tk.Label(self.nmpo_frame, text="Incorrect ", bg="white", fg="red", font=15)
+
+        self.label_error.place(relx=0.49, rely=0.6, anchor="center", width=250)
+
+        self.npassword.delete(0, tk.END)
+        self.cpassword.delete(0, tk.END)
+        
+
     def afficher_elections_futur(self):
         # Supprimer l'ancien canvas s'il existe
         if hasattr(self, 'canvas_futur'):
@@ -809,6 +1056,18 @@ class App:
 
         # relancer affichage accueil pour repositionner correctement
         self.show_accueil_frame()
+
+
+
+
+
+
+
+
+
+
+
+
 
 root = tk.Tk()
 app = App(root)
