@@ -1420,7 +1420,7 @@ class App:
             elections = []
 
         # Filtrer les élections à venir (optionnel selon ta logique)
-        elections_futur = [e for e in elections if e.get("statut") == "futur"]
+        elections_futur = [e for e in elections if e.get("statut").strip().lower() == "futur"]
 
         # Créer un canvas scrollable positionné sur la frame
         self.canvas_futur = tk.Canvas(self.futurE_frame, bg="#7fafc0", highlightthickness=0)
@@ -1499,7 +1499,7 @@ class App:
         except:
             elections = []
 
-        elections_encours = [e for e in elections if e.get("statut") == "en cours"]
+        elections_encours = [e for e in elections if e.get("statut").strip().lower() == "en cours"]
 
         # ← NOUVEAU : retirer les élections où l'utilisateur a déjà voté
         email_connecte = getattr(self, "utilisateur_connecte", {}).get("email", "")
@@ -1597,7 +1597,7 @@ class App:
             elections = []
 
         # Filtrer les élections à venir (optionnel selon ta logique)
-        elections_finies = [e for e in elections if e.get("statut") == "terminé"]
+        elections_finies = [e for e in elections if e.get("statut").strip().lower() == "terminé"]
 
         # Créer un canvas scrollable positionné sur la frame
         self.canvas_finies = tk.Canvas(self.finishE_frame, bg="#7fafc0", highlightthickness=0)
