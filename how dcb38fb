@@ -1,0 +1,69 @@
+[33mcommit b9987cdd276991625aed200a865aabdf422ea4d7[m
+Author: FIRDAOUS <G138096864@gmail.com>
+Date:   Tue Jun 9 00:02:59 2026 +0100
+
+    modif
+
+[1mdiff --git a/Fichier_Votes.json b/Fichier_Votes.json[m
+[1mindex 7618bee..d27a644 100644[m
+[1m--- a/Fichier_Votes.json[m
+[1m+++ b/Fichier_Votes.json[m
+[36m@@ -9,24 +9,7 @@[m
+             "Firdaous.AITELKADI@emines.um6p.ma",[m
+             "Charifa.NAIM@emines.um6p.ma"[m
+         ][m
+[31m-    },[m
+[31m-    {[m
+[31m-        "titre": "Élection du bureau des étudiants43",[m
+[31m-        "resultats": {[m
+[31m-            "": 2[m
+[31m-        },[m
+[31m-        "votants": [[m
+[31m-            "Firdaous.AITELKADI@emines.um6p.ma",[m
+[31m-            "Charifa.NAIM@emines.um6p.ma"[m
+[31m-        ][m
+[31m-    },[m
+[31m-    {[m
+[31m-        "titre": "Élection du délégué de classe33",[m
+[31m-        "resultats": {[m
+[31m-            "": 1[m
+[31m-        },[m
+[31m-        "votants": [[m
+[31m-            "Firdaous.AITELKADI@emines.um6p.ma"[m
+[31m-        ][m
+     }[m
+[32m+[m[41m  [m
+[32m+[m[41m [m
+ ][m
+\ No newline at end of file[m
+[1mdiff --git a/app.py b/app.py[m
+[1mindex f9aefe4..33f80b6 100644[m
+[1m--- a/app.py[m
+[1m+++ b/app.py[m
+[36m@@ -1420,7 +1420,7 @@[m [mclass App:[m
+             elections = [][m
+ [m
+         # Filtrer les élections à venir (optionnel selon ta logique)[m
+[31m-        elections_futur = [e for e in elections if e.get("statut") == "futur"][m
+[32m+[m[32m        elections_futur = [e for e in elections if e.get("statut").strip().lower() == "futur"][m
+ [m
+         # Créer un canvas scrollable positionné sur la frame[m
+         self.canvas_futur = tk.Canvas(self.futurE_frame, bg="#7fafc0", highlightthickness=0)[m
+[36m@@ -1499,7 +1499,7 @@[m [mclass App:[m
+         except:[m
+             elections = [][m
+ [m
+[31m-        elections_encours = [e for e in elections if e.get("statut") == "en cours"][m
+[32m+[m[32m        elections_encours = [e for e in elections if e.get("statut").strip().lower() == "en cours"][m
+ [m
+         # ← NOUVEAU : retirer les élections où l'utilisateur a déjà voté[m
+         email_connecte = getattr(self, "utilisateur_connecte", {}).get("email", "")[m
+[36m@@ -1597,7 +1597,7 @@[m [mclass App:[m
+             elections = [][m
+ [m
+         # Filtrer les élections à venir (optionnel selon ta logique)[m
+[31m-        elections_finies = [e for e in elections if e.get("statut") == "terminé"][m
+[32m+[m[32m        elections_finies = [e for e in elections if e.get("statut").strip().lower() == "terminé"][m
+ [m
+         # Créer un canvas scrollable positionné sur la frame[m
+         self.canvas_finies = tk.Canvas(self.finishE_frame, bg="#7fafc0", highlightthickness=0)[m
