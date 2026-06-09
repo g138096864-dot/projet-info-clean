@@ -38,7 +38,13 @@ class App:
         self.image_voter2 =  Image.open("participer au vote copy.png")
         self.image_voter3 =  Image.open("participer au vote copy 2.png")
         self.image_voter4 =  Image.open("participer au vote copy 3.png")
+<<<<<<< HEAD
 
+=======
+        self.image_gererele = Image.open("gérer les elections.png")
+        self.image_gerercon = Image.open("Gérer les candidature.png")
+        self.image_voirres = Image.open("Voir les résultats.png")
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
         # CREATION DES FRAMES : 
         self.accueil_frame=tk.Frame(root)
         self.register_frame=tk.Frame(root)
@@ -89,7 +95,6 @@ class App:
 
         self.label_admin = tk.Label(self.admin_frame)
         self.label_admin.pack(fill="both", expand=True)
-
         self.label_postuler_individuelle = tk.Label(self.postuler_individuelle_frame)
         self.label_postuler_individuelle.pack(fill="both", expand=True)
 
@@ -172,6 +177,7 @@ class App:
     highlightthickness=0,
     relief="flat",command=self.show_finishE_frame)
         self.button_finishE.place(relx=0.24, rely=0.05, anchor="center")
+<<<<<<< HEAD
 
         self.button_gérerE= tk.Button(root, text="Accéder",
     fg="white",              
@@ -199,6 +205,9 @@ class App:
     highlightthickness=0,
     relief="flat",command=self.show_voirres_frame)
         self.button_voirR.place(relx=0.24, rely=0.05, anchor="center")
+=======
+        
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
 
         self.button_accueil = tk.Button(root, text="Accueil",
     fg="white",              
@@ -427,6 +436,30 @@ class App:
             resized = self.image_voter4.resize((event.width, event.height))
             self.photo_voter4 = ImageTk.PhotoImage(resized)
             self.label_voter4.config(image=self.photo_voter4)
+<<<<<<< HEAD
+=======
+    def resize_image_gererele(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_gererele.resize((event.width, event.height))
+            self.photo_gererele = ImageTk.PhotoImage(resized)
+            self.label_gererele.config(image=self.photo_gererele)    
+
+    def resize_image_gerercon(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_gerercon.resize((event.width, event.height))
+            self.photo_gerercon = ImageTk.PhotoImage(resized)
+            self.label_gerercon.config(image=self.photo_gerercon)
+
+    def resize_image_voirres(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_voirres.resize((event.width, event.height))
+            self.photo_voirres = ImageTk.PhotoImage(resized)
+            self.label_voirres.config(image=self.photo_voirres)    
+
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
     def resize_image_admin(self, event):
          # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
@@ -476,17 +509,9 @@ class App:
         self.button_candidat.place_forget()
         self.ecole.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.button_finishE.place_forget()
-        self.button_currentE.place_forget()
-        self.button_futurE.place_forget() 
-
         
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
@@ -538,15 +563,8 @@ class App:
         self.button_candidat.place_forget()
         self.ecole.place_forget()
         self.question.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.button_finishE.place_forget()
-        self.button_currentE.place_forget()
-        self.button_futurE.place_forget() 
 
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.motivation.place_forget()
         
@@ -599,9 +617,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget() 
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
@@ -609,7 +624,6 @@ class App:
         self.question.place_forget()
 
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -662,12 +676,8 @@ class App:
         self.button_register.place_forget()
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget() 
         self.ecole.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -702,7 +712,13 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+<<<<<<< HEAD
         
+=======
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
 
 
         #AFFICHER LA BONNE FRAME
@@ -727,13 +743,9 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget() 
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget() 
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -775,15 +787,16 @@ class App:
         self.button_accueil.place_forget() 
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
-        self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget() 
+        self.button_finishE.place_forget() 
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.ecole.place_forget()
+<<<<<<< HEAD
         self.nom2.place_forget()
         self.nom1.place_forget()
+=======
+        
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
@@ -802,10 +815,15 @@ class App:
         self.finishE_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.mpo_frame.pack_forget()
+<<<<<<< HEAD
 
+=======
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
         #AFFICHER LA BONNE FRAME
         self.admin_frame.pack(fill="both", expand=True)
-
         #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
         self.button_login.place_forget()
@@ -828,16 +846,170 @@ class App:
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.ecole.place_forget()
-        self.nom2.place_forget()
-        self.nom1.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+<<<<<<< HEAD
+=======
+    
+    def show_gererele_frame(self):
+        #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
+        self.postuler_individuelle_frame.pack_forget()
+        self.postuler_liste_frame.pack_forget()
+        self.voter1_frame.pack_forget()
+        self.voter2_frame.pack_forget()
+        self.voter3_frame.pack_forget()
+        self.voter4_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
-        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
-        self.button_gérerE.place(relx=0.17, rely=0.8, anchor="center",height=30,width=100)
-        self.button_gérerC.place(relx=0.5, rely=0.8, anchor="center",height=30,width=100)
-        self.button_voirR.place(relx=0.83, rely=0.8, anchor="center",height=30,width=100)
+        #AFFICHER LA BONNE FRAME
+        self.gererele_frame.pack(fill="both", expand=True)
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
+
+        self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
+        self.question.place_forget()
+        self.ecole.place_forget()
+        self.nom1.place_forget()
+        self.prenom1.place_forget()
+        self.combo_classe1.place_forget()
+        self.motivation.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+    
+    def show_gerercon_frame(self):
+                #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
+        self.postuler_individuelle_frame.pack_forget()
+        self.postuler_liste_frame.pack_forget()
+        self.voter1_frame.pack_forget()
+        self.voter2_frame.pack_forget()
+        self.voter3_frame.pack_forget()
+        self.voter4_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.voirres_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.gerercon_frame.pack(fill="both", expand=True)
+
+        self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
+        self.question.place_forget()
+        self.ecole.place_forget()
+        self.nom1.place_forget()
+        self.prenom1.place_forget()
+        self.combo_classe1.place_forget()
+        self.motivation.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+    def show_voirres_frame(self):
+                #CACHER LES AUTRES FRAMES
+        self.login_frame.pack_forget()
+        self.register_frame.pack_forget()
+        self.accueil_frame.pack_forget()
+        self.condidat_frame.pack_forget()
+        self.futurE_frame.pack_forget()
+        self.finishE_frame.pack_forget()
+        self.currentE_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.admin_frame.pack_forget()
+        self.postuler_individuelle_frame.pack_forget()
+        self.postuler_liste_frame.pack_forget()
+        self.voter1_frame.pack_forget()
+        self.voter2_frame.pack_forget()
+        self.voter3_frame.pack_forget()
+        self.voter4_frame.pack_forget()
+        self.nmpo_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+
+        #AFFICHER LA BONNE FRAME
+        self.voirres_frame.pack(fill="both", expand=True)
+
+        self.nom.place_forget()
+        self.button_login.place_forget()
+        self.button_register.place_forget()
+        self.prenom.place_forget()
+        self.confirm.place_forget()
+        self.date_entry.place_forget()
+        self.combo_classe.place_forget()
+        self.email1.place_forget()
+        self.email2.place_forget() 
+        self.button_send1.place_forget()
+        self.button_send2.place_forget()
+        self.button_mpo.place_forget()
+        self.password1.place_forget()
+        self.password2.place_forget() 
+        self.button_accueil.place_forget() 
+        self.button_futurE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_finishE.place_forget() 
+        self.button_candidat.place_forget()
+        self.question.place_forget()
+        self.ecole.place_forget()
+        self.nom1.place_forget()
+        self.prenom1.place_forget()
+        self.combo_classe1.place_forget()
+        self.motivation.place_forget()
+
+        #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
+        self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
 
     def show_futurE_frame(self):
         # CACHER LES AUTRES FRAMES
@@ -847,7 +1019,7 @@ class App:
         self.condidat_frame.pack_forget()
         self.mpo_frame.pack_forget()
         self.currentE_frame.pack_forget()
-        self.finishE_frame.pack_forget() 
+        self.finishE_frame.pack_forget()
         self.nmpo_frame.pack_forget()
         self.admin_frame.pack_forget()
         self.postuler_individuelle_frame.pack_forget()
@@ -856,6 +1028,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         # AFFICHER LA BONNE FRAME
@@ -878,13 +1053,9 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
         self.ecole.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -913,6 +1084,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         # AFFICHER LA BONNE FRAME
@@ -935,12 +1109,8 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -970,6 +1140,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         # AFFICHER LA BONNE FRAME
@@ -992,11 +1165,7 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
         self.nom1.place_forget()
-        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -1025,6 +1194,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         # AFFICHER LA BONNE FRAME
@@ -1047,10 +1219,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.nom2.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1078,6 +1246,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         
 
 
@@ -1101,9 +1272,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1128,6 +1296,9 @@ class App:
         self.voter4_frame.pack_forget()
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         
 
 
@@ -1151,12 +1322,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.nom1.place_forget()
-        self.nom2.place_forget()
-        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1181,6 +1346,9 @@ class App:
         self.voter1_frame.pack_forget()
         self.voter4_frame.pack_forget()
         self.voter3_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         
 
 
@@ -1204,11 +1372,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.nom2.place_forget()
-        self.nom1.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1233,6 +1396,9 @@ class App:
         self.voter1_frame.pack_forget()
         self.voter2_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         
 
 
@@ -1256,12 +1422,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.nom2.place_forget()
-        self.nom1.place_forget()
-        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1286,6 +1446,9 @@ class App:
         self.voter1_frame.pack_forget()
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         
 
 
@@ -1309,12 +1472,6 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
-        self.button_gérerE.place_forget()
-        self.button_gérerC.place_forget()
-        self.button_voirR.place_forget()
-        self.nom2.place_forget()
-        self.nom1.place_forget()
-        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1511,7 +1668,6 @@ class App:
         self.npassword.delete(0, tk.END)
         self.cpassword.delete(0, tk.END)
         
-    #PARTIE CANDIDAT 
 
     def afficher_elections_futur(self):
         # Supprimer l'ancien canvas s'il existe
@@ -2579,6 +2735,7 @@ class App:
             anchor="center",
             width=350
         )
+<<<<<<< HEAD
 
     # PARTIE ADMIN : 
     def afficher_gérer_candidature(self):
@@ -2764,6 +2921,8 @@ class App:
         
 
     #AUTRES :
+=======
+>>>>>>> 40dec4de8f47115ae726edda05c373fbbd1b0213
     def fix_layout(self):
         # forcer recalcul des dimensions
         self.root.update_idletasks()
