@@ -38,7 +38,10 @@ class App:
         self.image_voter2 =  Image.open("participer au vote copy.png")
         self.image_voter3 =  Image.open("participer au vote copy 2.png")
         self.image_voter4 =  Image.open("participer au vote copy 3.png")
-
+        self.image_gererele = Image.open("gérer les elections.png")
+        self.image_gerercon = Image.open("Gérer les condidatures.png")
+        self.image_gerercon = Image.open("Gérer les condidatures.png")
+        self.image_voirres = Image.open("Voir les résultats.png")
         # CREATION DES FRAMES : 
         self.accueil_frame=tk.Frame(root)
         self.register_frame=tk.Frame(root)
@@ -56,7 +59,9 @@ class App:
         self.voter2_frame =tk.Frame(root)
         self.voter3_frame =tk.Frame(root)
         self.voter4_frame =tk.Frame(root)
-
+        self.gererele_frame =tk.Frame(root)
+        self.gerercon_frame =tk.Frame(root)
+        self.voirres_frame =tk.Frame(root)
         # PACKAGE DES FRAMES :
         self.accueil_frame.pack(fill="both", expand=True)
 
@@ -107,6 +112,14 @@ class App:
         self.label_voter4= tk.Label(self.voter4_frame)
         self.label_voter4.pack(fill="both", expand=True)
 
+        self.label_gererele= tk.Label(self.gererele_frame)
+        self.label_gererele.pack(fill="both", expand=True)
+
+        self.label_gerercon= tk.Label(self.gerercon_frame)
+        self.label_gerercon.pack(fill="both", expand=True)
+
+        self.label_voirres= tk.Label(self.voirres_frame)
+        self.label_voirres.pack(fill="both", expand=True)
         # METTRE A JOUR L'IMAGE QUAND LA FENETRE CHANGE
 
         self.accueil_frame.bind("<Configure>", self.resize_image_accueil)
@@ -125,6 +138,9 @@ class App:
         self.voter2_frame.bind("<Configure>", self.resize_image_voter2)
         self.voter3_frame.bind("<Configure>", self.resize_image_voter3)
         self.voter4_frame.bind("<Configure>", self.resize_image_voter4)
+        self.gererele_frame.bind("<Configure>", self.resize_image_gererele)
+        self.gerercon_frame.bind("<Configure>", self.resize_image_gerercon)
+        self.voirres_frame.bind("<Configure>", self.resize_image_voirres)
        # LES BOUTTONS DE L'APPLICATION
         self.button_register = tk.Button(root,
     text="S'inscrire",
@@ -400,8 +416,26 @@ class App:
             resized = self.image_voter4.resize((event.width, event.height))
             self.photo_voter4 = ImageTk.PhotoImage(resized)
             self.label_voter4.config(image=self.photo_voter4)
-        
-        
+    def resize_image_gererele(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_gererele.resize((event.width, event.height))
+            self.photo_gererele = ImageTk.PhotoImage(resized)
+            self.label_gererele.config(image=self.photo_gererele)    
+
+    def resize_image_gerercon(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_gerercon.resize((event.width, event.height))
+            self.photo_gerercon = ImageTk.PhotoImage(resized)
+            self.label_gerercon.config(image=self.photo_gerercon)
+
+    def resize_image_voirres(self, event):
+         # éviter bug quand fenêtre très petite
+        if event.width > 1 and event.height > 1:
+            resized = self.image_voirres.resize((event.width, event.height))
+            self.photo_voirres = ImageTk.PhotoImage(resized)
+            self.label_voirres.config(image=self.photo_voirres)    
 
     def resize_image_admin(self, event):
          # éviter bug quand fenêtre très petite
@@ -437,6 +471,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
@@ -488,6 +525,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
@@ -539,6 +579,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
@@ -598,6 +641,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
@@ -655,6 +701,9 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
 
 
         #AFFICHER LA BONNE FRAME
@@ -703,6 +752,9 @@ class App:
         self.currentE_frame.pack_forget()
         self.mpo_frame.pack_forget()
         self.admin_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.nmpo_frame.pack(fill="both", expand=True)
         #CACHER LES ELEMENTS DES AUTRES FRAMES
@@ -727,6 +779,7 @@ class App:
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.ecole.place_forget()
+        
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
@@ -745,6 +798,9 @@ class App:
         self.finishE_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.mpo_frame.pack_forget()
+        self.gererele_frame.pack_forget()
+        self.gerercon_frame.pack_forget()
+        self.voirres_frame.pack_forget()
         #AFFICHER LA BONNE FRAME
         self.admin_frame.pack(fill="both", expand=True)
         #CACHER LES ELEMENTS DES AUTRES FRAMES
@@ -772,6 +828,11 @@ class App:
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
+    
+    def show_gererele_frame():
+    def show_gerercon_frame():
+    def show_voirres_frame():
+
 
 
     def show_futurE_frame(self):
