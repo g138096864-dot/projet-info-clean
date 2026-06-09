@@ -94,6 +94,7 @@ class App:
 
         self.label_admin = tk.Label(self.admin_frame)
         self.label_admin.pack(fill="both", expand=True)
+
         self.label_postuler_individuelle = tk.Label(self.postuler_individuelle_frame)
         self.label_postuler_individuelle.pack(fill="both", expand=True)
 
@@ -187,7 +188,33 @@ class App:
     highlightthickness=0,
     relief="flat",command=self.show_finishE_frame)
         self.button_finishE.place(relx=0.24, rely=0.05, anchor="center")
+
+        self.button_gérerE= tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat")
+        self.button_gérerE.place(relx=0.24, rely=0.05, anchor="center")
         
+        self.button_gérerC = tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat")
+        self.button_gérerC.place(relx=0.24, rely=0.05, anchor="center")
+
+        self.button_voirR= tk.Button(root, text="Accéder",
+    fg="white",              
+    bg="#073763",           
+    activeforeground="white",
+    borderwidth=0,
+    highlightthickness=0,
+    relief="flat")
+        self.button_voirR.place(relx=0.24, rely=0.05, anchor="center")
 
         self.button_accueil = tk.Button(root, text="Accueil",
     fg="white",              
@@ -416,6 +443,7 @@ class App:
             resized = self.image_voter4.resize((event.width, event.height))
             self.photo_voter4 = ImageTk.PhotoImage(resized)
             self.label_voter4.config(image=self.photo_voter4)
+<<<<<<< Updated upstream
     def resize_image_gererele(self, event):
          # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
@@ -437,6 +465,8 @@ class App:
             self.photo_voirres = ImageTk.PhotoImage(resized)
             self.label_voirres.config(image=self.photo_voirres)    
 
+=======
+>>>>>>> Stashed changes
     def resize_image_admin(self, event):
          # éviter bug quand fenêtre très petite
         if event.width > 1 and event.height > 1:
@@ -489,9 +519,17 @@ class App:
         self.button_candidat.place_forget()
         self.ecole.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.button_finishE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_futurE.place_forget() 
+
         
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
@@ -546,8 +584,15 @@ class App:
         self.button_candidat.place_forget()
         self.ecole.place_forget()
         self.question.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.button_finishE.place_forget()
+        self.button_currentE.place_forget()
+        self.button_futurE.place_forget() 
 
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.motivation.place_forget()
         
@@ -603,6 +648,9 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget() 
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
         self.ecole.place_forget()
@@ -610,6 +658,7 @@ class App:
         self.question.place_forget()
 
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -665,8 +714,12 @@ class App:
         self.button_register.place_forget()
         self.button_mpo.place_forget()
         self.button_candidat.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget() 
         self.ecole.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -701,9 +754,13 @@ class App:
         self.voter2_frame.pack_forget()
         self.voter3_frame.pack_forget()
         self.voter4_frame.pack_forget()
+<<<<<<< Updated upstream
         self.gererele_frame.pack_forget()
         self.gerercon_frame.pack_forget()
         self.voirres_frame.pack_forget()
+=======
+        
+>>>>>>> Stashed changes
 
 
         #AFFICHER LA BONNE FRAME
@@ -728,9 +785,13 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget() 
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget() 
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -775,11 +836,19 @@ class App:
         self.button_accueil.place_forget() 
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
-        self.button_finishE.place_forget() 
+        self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget() 
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.ecole.place_forget()
+<<<<<<< Updated upstream
         
+=======
+        self.nom2.place_forget()
+        self.nom1.place_forget()
+>>>>>>> Stashed changes
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
@@ -798,11 +867,16 @@ class App:
         self.finishE_frame.pack_forget()
         self.currentE_frame.pack_forget()
         self.mpo_frame.pack_forget()
+<<<<<<< Updated upstream
         self.gererele_frame.pack_forget()
         self.gerercon_frame.pack_forget()
         self.voirres_frame.pack_forget()
+=======
+
+>>>>>>> Stashed changes
         #AFFICHER LA BONNE FRAME
         self.admin_frame.pack(fill="both", expand=True)
+
         #CACHER LES ELEMENTS DES AUTRES FRAMES
         self.nom.place_forget()
         self.button_login.place_forget()
@@ -825,6 +899,8 @@ class App:
         self.button_candidat.place_forget()
         self.question.place_forget()
         self.ecole.place_forget()
+        self.nom2.place_forget()
+        self.nom1.place_forget()
 
         #AFFICHER ET PLACER LES BOUTTONS DE LA FRAME
         self.button_accueil.place(relx=0.1, rely=0.06, anchor="center",height=30,width=100)
@@ -834,6 +910,10 @@ class App:
     def show_voirres_frame():
 
 
+        #AFFICHER ET PLACER LES AUTRES ELEMENTS DE LA FRAME
+        self.button_gérerE.place(relx=0.17, rely=0.8, anchor="center",height=30,width=100)
+        self.button_gérerC.place(relx=0.5, rely=0.8, anchor="center",height=30,width=100)
+        self.button_voirR.place(relx=0.83, rely=0.8, anchor="center",height=30,width=100)
 
     def show_futurE_frame(self):
         # CACHER LES AUTRES FRAMES
@@ -843,7 +923,7 @@ class App:
         self.condidat_frame.pack_forget()
         self.mpo_frame.pack_forget()
         self.currentE_frame.pack_forget()
-        self.finishE_frame.pack_forget()
+        self.finishE_frame.pack_forget() 
         self.nmpo_frame.pack_forget()
         self.admin_frame.pack_forget()
         self.postuler_individuelle_frame.pack_forget()
@@ -874,9 +954,13 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
         self.ecole.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -927,8 +1011,12 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
         self.question.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -980,7 +1068,11 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
         self.nom1.place_forget()
+        self.nom2.place_forget()
         self.prenom1.place_forget()
         self.combo_classe1.place_forget()
         self.motivation.place_forget()
@@ -1031,6 +1123,10 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.nom2.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1081,6 +1177,9 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1128,6 +1227,12 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.nom1.place_forget()
+        self.nom2.place_forget()
+        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1175,6 +1280,11 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.nom2.place_forget()
+        self.nom1.place_forget()
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1222,6 +1332,12 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.nom2.place_forget()
+        self.nom1.place_forget()
+        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1269,6 +1385,12 @@ class App:
         self.button_futurE.place_forget()
         self.button_currentE.place_forget()
         self.button_finishE.place_forget()
+        self.button_gérerE.place_forget()
+        self.button_gérerC.place_forget()
+        self.button_voirR.place_forget()
+        self.nom2.place_forget()
+        self.nom1.place_forget()
+        
         
         # AFFICHER ET PLACER LES BOUTONS
         self.button_accueil.place(relx=0.7, rely=0.06, anchor="center", height=30, width=100)
@@ -1465,6 +1587,7 @@ class App:
         self.npassword.delete(0, tk.END)
         self.cpassword.delete(0, tk.END)
         
+    #PARTIE CANDIDAT 
 
     def afficher_elections_futur(self):
         # Supprimer l'ancien canvas s'il existe
@@ -2532,6 +2655,85 @@ class App:
             anchor="center",
             width=350
         )
+
+    # PARTIE ADMIN : 
+    def afficher_gérer_candidature(self):
+        # Supprimer l'ancien canvas s'il existe
+        if hasattr(self, 'canvas_gérerC'):
+            self.canvas_gérerC.destroy()
+        if hasattr(self, 'scrollbar_gérerC'):
+            self.scrollbar_gérerC.destroy()
+
+        # Charger les élections depuis le fichier JSON
+        try:
+            with open("Fichier_Elections.json", "r", encoding="utf-8") as f:
+                elections = json.load(f)
+        except:
+            elections = []
+
+        # Filtrer les élections à venir (optionnel selon ta logique)
+        elections_futur = [e for e in elections if e.get("statut").strip().lower() == "futur"]
+
+        # Créer un canvas scrollable positionné sur la frame
+        self.canvas_gérerC = tk.Canvas(self.gerercon_frame, bg="#7fafc0", highlightthickness=0)
+        self.scrollbar_gérerC = tk.Scrollbar(self.gerercon_frame, orient="vertical", command=self.canvas_gérerC.yview)
+        self.canvas_gérerC.configure(yscrollcommand=self.scrollbar_gérerC.set)
+
+        # Positionner le canvas et la scrollbar sur la frame (zone centrale)
+        self.canvas_gérerC.place(relx=0.28, rely=0.27, relwidth=0.43, relheight=0.72)
+        self.scrollbar_gérerC.place(relx=0.72, rely=0.27, relheight=0.72)
+
+        # Frame intérieure dans le canvas
+        inner_frame = tk.Frame(self.canvas_gérerC, bg="#7fafc0")
+        canvas_window = self.canvas_gérerC.create_window((0, 0), window=inner_frame, anchor="nw")
+        def on_canvas_resize1(event):
+            self.canvas_gérerC.itemconfig(canvas_window, width=event.width)
+        self.canvas_gérerC.bind("<Configure>", on_canvas_resize1)
+
+        # Afficher chaque élection
+        for election in elections_futur:
+            self.creer_carte_election_futur(inner_frame, election)
+
+        # Mettre à jour la scrollregion après le rendu
+        inner_frame.update_idletasks()
+        self.canvas_gérerC.configure(scrollregion=self.canvas_gérerC.bbox("all"))
+
+        # Scroll avec la molette
+        self.canvas_gérerC.bind("<MouseWheel>", lambda e: self.canvas_gérerC.yview_scroll(-1*(e.delta//120), "units"))
+
+    
+    def creer_carte_gérerC(self, parent, election):
+        # Carte blanche pour chaque élection
+        carte = tk.Frame(parent, bg="white", bd=1, relief="solid")
+        carte.pack(fill="x", padx=10, pady=8, ipady=8)
+
+        # Titre
+        tk.Label(carte, text=election.get("titre", ""), bg="white",
+                font=("Arial", 11, "bold"), anchor="w").pack(anchor="w", padx=10, pady=(8, 2))
+
+        # Dates
+        tk.Label(carte, text=f"Date de départ d'élection :    {election.get('date_debut', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+        tk.Label(carte, text=f"Date de fin d'élection :           {election.get('date_fin', '')}",
+                bg="white", font=("Arial", 9), anchor="w").pack(anchor="w", padx=10)
+
+        # Frame pour les boutons
+        btn_frame = tk.Frame(carte, bg="white")
+        btn_frame.pack(fill="x", padx=10, pady=(7, 4))
+
+        # Bouton "Voir les candidats" - à gauche
+        tk.Button(btn_frame, text="Voir les condidats",
+          fg="white", bg="#073763",
+          activeforeground="white",
+          borderwidth=0, highlightthickness=0, relief="flat",
+          width=20, height=2,
+          command=lambda e=election: self.voir_candidats_admin(e)
+          ).pack(side="center")
+
+        
+        
+
+    #AUTRES :
     def fix_layout(self):
         # forcer recalcul des dimensions
         self.root.update_idletasks()
