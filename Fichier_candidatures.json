@@ -21,5 +21,16 @@
                 "motivation": "djzkv"
             }
         ]
+    },
+    {
+        "titre": "Élection du délégué de classe39",
+        "type": "individuelle",
+        "candidats": [
+            {
+                "prenom": "Charifa",
+                "nom": "Naim",
+                "classe": "2029"
+            }
+        ]
     }
 ]
