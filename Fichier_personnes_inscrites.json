@@ -1,19 +1,65 @@
 [
     {
-        "prenom": "Ait Elkadi",
-        "email": "Firdaous.AITELKADI@emines.um6p.ma",
-        "nom": "Firdaous",
-        "password": "f@06iaM01",
-        "date_naissance": "2006-05-01",
-        "classe": "2029"
+        "prenom": "Aitmi",
+        "email": "Safae.AITMI@emines.um6p.ma",
+        "nom": "Safae",
+        "password": "0",
+        "date_naissance": "2006-03-23",
+        "classe": "2029",
+        "question_secrete": "A"
     },
     {
-        "prenom": "NAIM",
-        "email": "Charifa.NAIM@emines.um6p.ma",
-        "nom": "Charifa",
-        "password": "00000000",
-        "date_naissance": "2007-01-29",
+        "prenom": "Belgoutte",
+        "email": "Mariame.BELGOUT@emines.um6p.ma",
+        "nom": "Mariame",
+        "password": "1",
+        "date_naissance": "2006-05-19",
         "classe": "2029",
-        "question_secrete": "azerty"
+        "question_secrete": "B"
+    },
+    {
+        "prenom": "Belgoutte",
+        "email": "Maroua.BELGOUTT@emines.um6p.ma",
+        "nom": "Maroua",
+        "password": "2",
+        "date_naissance": "2006-05-19",
+        "classe": "2029",
+        "question_secrete": "C"
+    },
+    {
+        "prenom": "Baougzi",
+        "email": "Ranya.BAOUGZI@emines.um6p.ma",
+        "nom": "Ranya",
+        "password": "3",
+        "date_naissance": "2007-06-13",
+        "classe": "2029",
+        "question_secrete": "D"
+    },
+    {
+        "prenom": "Chaoub",
+        "email": "Aya.CHAOUB@emines.um6p.ma",
+        "nom": "Aya",
+        "password": "4",
+        "date_naissance": "2006-04-11",
+        "classe": "2029",
+        "question_secrete": "E"
+    },
+    {
+        "prenom": "Elmaoukour",
+        "email": "Jannate.ELMAOUK@emines.um6p.ma",
+        "nom": "Jannate",
+        "password": "5",
+        "date_naissance": "2006-09-09",
+        "classe": "2029",
+        "question_secrete": "F"
+    },
+    {
+        "prenom": "Marzak",
+        "email": "Nassima.MARZAK@emines.um6p.ma",
+        "nom": "Nassima",
+        "password": "6",
+        "date_naissance": "2006-09-12",
+        "classe": "2029",
+        "question_secrete": "G"
     }
 ]
